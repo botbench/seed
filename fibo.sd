@@ -1,0 +1,25 @@
+{ 1 [ROT] } {SWAP} [STORE]
+{
+	[DUP]
+	2 [GE]
+	{
+		[DUP]
+		1 [SUB]
+		[FIBO]
+		[SWAP]
+		2 [SUB]
+		[FIBO]
+		[ADD]
+	}
+	[SWAP] ?
+} {FIBO} [STORE]
+
+4 [FIBO]
+[PRINT]
+
+5 [FIBO]
+[PRINT]
+
+10 [FIBO]
+[PRINT]
+};
