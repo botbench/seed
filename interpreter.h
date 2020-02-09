@@ -10,5 +10,6 @@
 #define INTERPRETER_H_
 
 void execute();
+void execute_at ( char * location );
 
 #endif /* INTERPRETER_H_ */

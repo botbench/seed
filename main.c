@@ -6,8 +6,42 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "interpreter.h"
 
-int main() {
-	execute();
+long fsize ( FILE *fp );
+
+int main ( int argc, char * const argv[] ) {
+	if ( argc == 2 )
+	{
+		FILE * fp = fopen ( argv [ 1 ], "r" );
+		if ( fp != NULL )
+		{
+			long size = fsize ( fp );
+			if ( size > 0 )
+			{
+				char * sourcecode = malloc ( size );
+				int bytesread = fread( sourcecode, 1, size, fp );
+				if ( bytesread > 0 )
+				{
+					execute_at ( sourcecode );
+				}
+				free ( sourcecode );
+			}
+		}
+	}
+	else
+	{
+		execute();
+	}
+}
+
+long fsize ( FILE *fp ) 
+{
+    fseek ( fp, 0, SEEK_END );
+    long bytes = ftell ( fp );
+    rewind ( fp );
+    return bytes;
 }

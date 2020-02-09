@@ -115,7 +115,7 @@ static void push_value(char **location) {
 		unsigned long v = stack[--stack_ptr]; \
 		stack[stack_ptr - 1] = stack[stack_ptr - 1] op v;
 
-static void execute_at(char *loc) {
+void execute_at(char *loc) {
 	while (1) {
 		skip(&loc);
 
