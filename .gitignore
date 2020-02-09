@@ -1,0 +1,5 @@
+.vscode/
+CMakeFiles/
+*.swp
+CMakeCache.txt
+*.cmake
