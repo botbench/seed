@@ -6,8 +6,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+#include <sys/errno.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "interpreter.h"
 
@@ -23,7 +25,7 @@ int main ( int argc, char * const argv[] ) {
 			if ( size > 0 )
 			{
 				char * sourcecode = malloc ( size );
-				int bytesread = fread( sourcecode, 1, size, fp );
+				long bytesread = fread ( sourcecode, 1, size, fp );
 				if ( bytesread > 0 )
 				{
 					execute_at ( sourcecode );
@@ -31,6 +33,10 @@ int main ( int argc, char * const argv[] ) {
 				free ( sourcecode );
 			}
 		}
+        else
+        {
+            fprintf ( stderr, "errno: %s\n", strerror ( errno ) );
+        }
 	}
 	else
 	{
