@@ -1,6 +1,14 @@
 .vscode/
 CMakeFiles/
+seed.build/
+CMakeFiles/
+Debug/
+Release/
+CMakeScripts/
+.DS_Store
 *.swp
 CMakeCache.txt
 *.cmake
 Makefile
+seed
+seed.xcodeproj
